@@ -1,3 +1,4 @@
+
 {
   "name": "screenwave-entertainment-hub",
   "version": "1.0.0",
@@ -5,9 +6,16 @@
   "main": "main.cjs",
   "author": "Screenwave",
   "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ctorrea2015/screenwave-desktop.git"
+  },
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder --win nsis"
+    "dist": "electron-builder --win nsis --publish never"
+  },
+  "dependencies": {
+    "electron-updater": "^6.8.11"
   },
   "devDependencies": {
     "electron": "^37.2.6",
@@ -24,13 +32,18 @@
       "package.json"
     ],
     "asar": true,
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "Ctorrea2015",
+        "repo": "screenwave-desktop"
+      }
+    ],
     "win": {
       "target": [
         {
           "target": "nsis",
-          "arch": [
-            "x64"
-          ]
+          "arch": ["x64"]
         }
       ],
       "artifactName": "Screenwave-Setup-${version}.${ext}"
