@@ -1,7 +1,7 @@
 
 {
   "name": "screenwave-entertainment-hub",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Screenwave Entertainment Hub desktop wrapper for Windows 10/11",
   "main": "main.cjs",
   "author": "Screenwave",
