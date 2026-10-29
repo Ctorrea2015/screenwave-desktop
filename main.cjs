@@ -1,6 +1,9 @@
-const { app, BrowserWindow, shell } = require('electron');
 
-const SCREENWAVE_URL = 'https://screenwave-entertainment-hub-i4n0xq.v2.appdeploy.ai/';
+const { app, BrowserWindow, shell } = require('electron');
+const { autoUpdater } = require('electron-updater');
+
+const SCREENWAVE_URL =
+  'https://screenwave-entertainment-hub-i4n0xq.v2.appdeploy.ai/';
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -19,7 +22,9 @@ function createWindow() {
   });
 
   win.webContents.setWindowOpenHandler(({ url }) => {
-    if (url.startsWith('https://') || url.startsWith('http://')) shell.openExternal(url);
+    if (url.startsWith('https://') || url.startsWith('http://')) {
+      shell.openExternal(url);
+    }
     return { action: 'deny' };
   });
 
@@ -28,9 +33,19 @@ function createWindow() {
 
 app.whenReady().then(() => {
   createWindow();
+
   app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+    if (BrowserWindow.getAllWindows().length === 0) {
+      createWindow();
+    }
   });
+
+  // Check for updates only in the installed desktop application.
+  if (app.isPackaged) {
+    autoUpdater.checkForUpdatesAndNotify().catch((error) => {
+      console.error('Screenwave update check failed:', error);
+    });
+  }
 });
 
 app.on('window-all-closed', () => {
