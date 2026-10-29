@@ -1,0 +1,46 @@
+{
+  "name": "screenwave-entertainment-hub",
+  "version": "1.0.0",
+  "description": "Screenwave Entertainment Hub desktop wrapper for Windows 10/11",
+  "main": "main.cjs",
+  "author": "Screenwave",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "^37.2.6",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.screenwave.entertainmenthub",
+    "productName": "Screenwave Entertainment Hub",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.cjs",
+      "package.json"
+    ],
+    "asar": true,
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "Screenwave-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Screenwave Entertainment Hub"
+    }
+  }
+}
