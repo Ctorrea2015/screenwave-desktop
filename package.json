@@ -1,0 +1,12 @@
+{
+  "name": "screenwave-desktop",
+  "version": "1.0.0",
+  "description": "Screenwave Entertainment Hub for Windows",
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^37.10.3"
+  }
+}
